@@ -1,13 +1,13 @@
 <?php
 
-require_once __DIR__ . '/vendor/autoload.php';
+require_once __DIR__.'/vendor/autoload.php';
 
 use Github\AuthMethod;
 use Github\Client;
 use Symfony\Component\HttpClient\HttplugClient;
 
 if (count($argv) !== 3) {
-    echo 'Usage: ' . __FILE__ . ' {user} {repo}';
+    echo 'Usage: '.__FILE__.' {user} {repo}';
     exit(1);
 }
 
@@ -17,12 +17,12 @@ $repo = $argv[2];
 
 $client = Client::createWithHttpClient(new HttplugClient());
 
-$client->authenticate($token,  AuthMethod::ACCESS_TOKEN);
+$client->authenticate($token, AuthMethod::ACCESS_TOKEN);
 
 $organizationApi = $client->api('repo')->releases();
 
-$paginator  = new Github\ResultPager($client);
-$releases     = $paginator->fetchAll($organizationApi, 'all', ['rapidez', 'core']);
+$paginator = new Github\ResultPager($client);
+$releases = $paginator->fetchAll($organizationApi, 'all', ['rapidez', 'core']);
 
 $changelog = '# Changelog '.PHP_EOL.PHP_EOL;
 
