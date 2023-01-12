@@ -9,7 +9,7 @@ name: "Update Changelog"
 
 on:
   release:
-      types: [ published ]
+    types: [ published, edited, deleted ]
 
 jobs:
   update:
@@ -24,10 +24,9 @@ jobs:
       - name: Generate changelog
         uses: justbetter/generate-changelogs-action@main
         env:
-            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          owner: ${{ github.event.repository.owner.name }}
-          repo: ${{ github.event.repository.name }}
+          repository: ${{ github.repository }}
 
       - name: Commit CHANGELOG
         uses: stefanzweifel/git-auto-commit-action@v4
