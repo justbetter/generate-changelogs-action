@@ -6,7 +6,7 @@ use Github\AuthMethod;
 use Github\Client;
 use Symfony\Component\HttpClient\HttplugClient;
 
-if (count($argv) !== 3) {
+if (count($argv) !== 2) {
     echo 'Usage: '.__FILE__.' {user} {repo}';
     exit(1);
 }
