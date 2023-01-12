@@ -6,14 +6,15 @@ use Github\AuthMethod;
 use Github\Client;
 use Symfony\Component\HttpClient\HttplugClient;
 
-if (count($argv) !== 3) {
+if (count($argv) !== 2) {
     echo 'Usage: '.__FILE__.' {owner} {repo}';
     exit(1);
 }
 
 $token = getenv('GITHUB_TOKEN');
-$owner = $argv[1];
-$repo = $argv[2];
+$repository = explode('/', $argv[1]);
+$owner = $repository[0];
+$repo = $repository[1];
 
 $client = Client::createWithHttpClient(new HttplugClient());
 
