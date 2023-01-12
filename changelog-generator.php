@@ -1,6 +1,5 @@
 <?php
 
-
 require_once __DIR__ . '/vendor/autoload.php';
 
 use Github\AuthMethod;
@@ -13,12 +12,17 @@ if (count($argv) !== 3) {
 }
 
 $token = getenv('GITHUB_TOKEN');
+$user = $argv[1];
+$repo = $argv[2];
 
 $client = Client::createWithHttpClient(new HttplugClient());
 
 $client->authenticate($token,  AuthMethod::ACCESS_TOKEN);
 
-$releases = $client->api('repo')->releases()->all($argv[1], $argv[2]);
+$organizationApi = $client->api('repo')->releases();
+
+$paginator  = new Github\ResultPager($client);
+$releases     = $paginator->fetchAll($organizationApi, 'all', ['rapidez', 'core']);
 
 $changelog = '# Changelog '.PHP_EOL.PHP_EOL;
 
@@ -30,7 +34,5 @@ foreach ($releases as $release) {
 
     $changelog .= $release['body'].PHP_EOL.PHP_EOL;
 }
-
-echo $changelog;
 
 file_put_contents('CHANGELOG.md', $changelog);
