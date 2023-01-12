@@ -3,6 +3,7 @@ FROM laravelsail/php81-composer:latest
 
 # Copies your code file from your action repository to the filesystem path `/` of the container
 COPY entrypoint.sh /entrypoint.sh
+COPY composer.json /composer.json
 COPY changelog-generator.php /changelog-generator.php
 
 RUN ["chmod", "+x", "/entrypoint.sh"]
