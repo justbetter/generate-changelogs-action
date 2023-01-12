@@ -22,7 +22,7 @@ $client->authenticate($token, AuthMethod::ACCESS_TOKEN);
 $organizationApi = $client->api('repo')->releases();
 
 $paginator = new Github\ResultPager($client);
-$releases = $paginator->fetchAll($organizationApi, 'all', ['rapidez', 'core']);
+$releases = $paginator->fetchAll($organizationApi, 'all', [$user, $repo]);
 
 $changelog = '# Changelog '.PHP_EOL.PHP_EOL;
 
