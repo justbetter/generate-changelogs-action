@@ -14,6 +14,8 @@ if (count($argv) !== 2) {
 $token = getenv('GITHUB_TOKEN');
 $repo = $argv[1];
 
+echo $repo;
+
 $user = explode('/', $repo)[0];
 $repo = explode('/', $repo)[1];
 
