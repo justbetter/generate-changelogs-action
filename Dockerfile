@@ -5,8 +5,5 @@ FROM php:cli-alpine
 COPY entrypoint.sh /entrypoint.sh
 COPY changelog-generator.php /changelog-generator.php
 
-RUN ["chmod", "+x", "/entrypoint.sh"]
-RUN ["chmod", "+x", "/changelog-generator.php"]
-
 # Code file to execute when the docker container starts up (`entrypoint.sh`)
 ENTRYPOINT ["/entrypoint.sh"]
