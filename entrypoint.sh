@@ -1,5 +1,6 @@
 #!/bin/sh -l
 
+pwd
 cd /
 composer install
 
