@@ -1,10 +1,5 @@
 #!/bin/sh -l
 
-echo "GENERATING CHANGELOG"
+composer install
 
-echo $1
-echo $2
-
-gh api /repos/$1/$2/releases > releases
-
-php /changelog-generator.php
+php /changelog-generator.php $1 $2

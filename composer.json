@@ -1,0 +1,9 @@
+{
+  "name": "justbetter/generate-changelog-action",
+  "require": {
+    "php": "^8.0",
+    "knplabs/github-api": "^3.0",
+    "symfony/http-client": "^6.2",
+    "nyholm/psr7": "^1.5"
+  }
+}
