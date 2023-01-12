@@ -16,6 +16,8 @@ $repository = explode('/', $argv[1]);
 $owner = $repository[0];
 $repo = $repository[1];
 
+echo "Generating changelog for $owner / $repo";
+
 $client = Client::createWithHttpClient(new HttplugClient());
 
 $client->authenticate($token, AuthMethod::ACCESS_TOKEN);
@@ -24,6 +26,8 @@ $organizationApi = $client->api('repo')->releases();
 
 $paginator = new Github\ResultPager($client);
 $releases = $paginator->fetchAll($organizationApi, 'all', [$owner, $repo]);
+
+echo sprintf('Found %s releases', count($releases));
 
 $changelog = '# Changelog '.PHP_EOL.PHP_EOL;
 
