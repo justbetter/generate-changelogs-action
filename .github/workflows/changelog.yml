@@ -5,7 +5,7 @@ on:
     types: [ published, edited, deleted ]
 
 jobs:
-  update:
+  generate:
     runs-on: ubuntu-latest
 
     steps:
