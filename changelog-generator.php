@@ -6,18 +6,14 @@ use Github\AuthMethod;
 use Github\Client;
 use Symfony\Component\HttpClient\HttplugClient;
 
-if (count($argv) !== 2) {
-    echo 'Usage: '.__FILE__.' {user} {repo}';
+if (count($argv) !== 3) {
+    echo 'Usage: '.__FILE__.' {owner} {repo}';
     exit(1);
 }
 
 $token = getenv('GITHUB_TOKEN');
-$repo = $argv[1];
-
-echo $repo;
-
-$user = explode('/', $repo)[0];
-$repo = explode('/', $repo)[1];
+$owner = $argv[1];
+$repo = $argv[2];
 
 $client = Client::createWithHttpClient(new HttplugClient());
 
@@ -26,7 +22,7 @@ $client->authenticate($token, AuthMethod::ACCESS_TOKEN);
 $organizationApi = $client->api('repo')->releases();
 
 $paginator = new Github\ResultPager($client);
-$releases = $paginator->fetchAll($organizationApi, 'all', [$user, $repo]);
+$releases = $paginator->fetchAll($organizationApi, 'all', [$owner, $repo]);
 
 $changelog = '# Changelog '.PHP_EOL.PHP_EOL;
 
