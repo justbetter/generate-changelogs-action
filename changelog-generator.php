@@ -12,8 +12,10 @@ if (count($argv) !== 3) {
 }
 
 $token = getenv('GITHUB_TOKEN');
-$user = $argv[1];
-$repo = $argv[2];
+$repo = $argv[1];
+
+$user = explode('/', $repo)[0];
+$repo = explode('/', $repo)[1];
 
 $client = Client::createWithHttpClient(new HttplugClient());
 
