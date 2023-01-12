@@ -1,0 +1,23 @@
+name: 'Changelog Generator'
+description: 'Automatically generate a CHANGELOG based on the releases in GitHub'
+
+author: Vincent Boon <vincent@justbetter.nl>
+
+inputs:
+  user:
+    required: true
+    description: The GitHub user of the repo github.com/USER/repo
+  repo:
+    required: true
+    description: The GitHub repository of the repo github.com/user/REPO
+
+branding:
+  icon: copy
+  color: purple
+
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.user }}
+    - ${{ inputs.repo }}
