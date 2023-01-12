@@ -1,5 +1,7 @@
 #!/bin/sh -l
 
+echo "GENERATING CHANGELOG"
+
 echo $1
 echo $2
 
