@@ -4,9 +4,9 @@ description: 'Automatically generate a CHANGELOG based on the releases in GitHub
 author: Vincent Boon <vincent@justbetter.nl>
 
 inputs:
-  user:
+  owner:
     required: true
-    description: The GitHub user of the repo github.com/USER/repo
+    description: The GitHub owner of the repo github.com/OWNER/repo
   repo:
     required: true
     description: The GitHub repository of the repo github.com/user/REPO
