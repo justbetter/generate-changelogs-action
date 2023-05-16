@@ -61,6 +61,12 @@ function deepenHeadings(string $markdown): string
 {
     return preg_replace_callback('/^(#+)(.*)$/m', function ($matches): string {
         $level = strlen($matches[1]);
-        return str_repeat('#', $level + 1).$matches[2];
+
+        // Only deepen the heading when the GitHub 'What's Changed' text has been added
+        if ($level === 2) {
+            $level++;
+        }
+
+        return str_repeat('#', $level).$matches[2];
     }, $markdown);
 }
