@@ -2,6 +2,25 @@
 
 This action will generate a full changelog based on a repositories releases.
 
+## Filtering on branch
+
+It is possible to filter on a branch / commit.
+The query parameter `sha` is used for this, see: https://docs.github.com/en/rest/commits/commits
+
+To filter on a branch, add the `sha` parameter:
+
+```yaml
+jobs:
+  update:
+      - name: Generate changelog
+        uses: justbetter/generate-changelogs-action@main
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          repository: ${{ github.repository }}
+          sha: ${{ github.head_ref || github.ref_name }}
+```
+
 ## Example workflow
 
 ```yaml
