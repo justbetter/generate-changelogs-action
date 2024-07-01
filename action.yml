@@ -8,6 +8,10 @@ inputs:
     required: true
     description: The GitHub repository. owner/repo
 
+  sha:
+    required: false
+    description: Filter on branch / commit
+
 branding:
   icon: copy
   color: purple
@@ -17,3 +21,5 @@ runs:
   image: 'Dockerfile'
   args:
     - ${{ inputs.repository }}
+    - ${{ inputs.sha }}
+    - /github/workspace/CHANGELOG.md

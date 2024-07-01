@@ -1,12 +1,8 @@
-# Container image that runs your code
-FROM laravelsail/php81-composer:latest
+FROM php:8.3-alpine
 
-# Copies your code file from your action repository to the filesystem path `/` of the container
-COPY entrypoint.sh /entrypoint.sh
-COPY composer.json /composer.json
-COPY changelog-generator.php /changelog-generator.php
+RUN mkdir /app
+COPY . /app
 
-RUN ["chmod", "+x", "/entrypoint.sh"]
+RUN ["chmod", "+x", "/app/entrypoint.sh"]
 
-# Code file to execute when the docker container starts up (`entrypoint.sh`)
-ENTRYPOINT ["/entrypoint.sh"]
+ENTRYPOINT ["/app/entrypoint.sh"]
