@@ -19,7 +19,7 @@ $repository = explode('/', $argv[1]);
 $owner = $repository[0];
 $repo = $repository[1];
 $sha = $argv[2] ?? null;
-$outputFile = $argv[3] ?? 'CHANGELOG.md';
+$outputFile = '/github/workspace/CHANGELOG.md';
 
 echo "Generating changelog for $owner / $repo on branch/commit ".($sha ?? 'default').PHP_EOL;
 echo "Output file: $outputFile" . PHP_EOL;

@@ -22,4 +22,3 @@ runs:
   args:
     - ${{ inputs.repository }}
     - ${{ inputs.sha }}
-    - /github/workspace/CHANGELOG.md
