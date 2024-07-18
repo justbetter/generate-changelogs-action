@@ -46,7 +46,7 @@ $releases = $paginator->fetchAll($repoApi, 'all', [$owner, $repo]);
 
 echo sprintf('Found %s releases', count($releases)).PHP_EOL;
 
-if ($sha !== null) {
+if ($sha !== null && strlen($sha) > 0) {
 
     $commits = $paginator->fetchAll($commitApi, 'all', [$owner, $repo, ['sha' => urlencode($sha)]]);
     $tags = $paginator->fetchAll($tagsApi, 'all', [$owner, $repo]);
